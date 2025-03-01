@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const itemList = document.getElementById('itemList');
 
     // Lista inicial de itens (agora com quantidade e status)
-    const initialItems = [
-    ];
+    const initialItems = [];
 
     // Função para renderizar a lista
     function renderList() {
@@ -19,11 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 li.classList.add('completed'); // Adiciona classe para itens completos
             }
 
-
-	     // Texto do item com quantidade
-            const itemText = document.createElement('span');
-            itemText.textContent = `${item.name} (${item.quantity}x)`;
-
             // Checkbox para marcar como comprado
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
@@ -32,7 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.completed = checkbox.checked;
                 renderList(); // Re-renderiza a lista
             });
-           
+
+            // Texto do item com quantidade
+            const itemText = document.createElement('span');
+            itemText.textContent = `${item.name} (${item.quantity}x)`;
+
             // Botão para remover o item
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remover';
@@ -42,9 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // Adiciona elementos ao <li>
-            li.appendChild(itemText);
-            li.appendChild(checkbox);
-            li.appendChild(removeButton);
+            li.appendChild(checkbox); // Checkbox à esquerda
+            li.appendChild(itemText); // Texto no meio
+            li.appendChild(removeButton); // Botão de remover à direita
             itemList.appendChild(li);
         }
     }

@@ -58,6 +58,7 @@ ul {
     padding: 0;
 }
 
+/* Ajustes para os itens da lista */
 li {
     background-color: #f8f9fa;
     padding: 10px;
@@ -65,15 +66,23 @@ li {
     border: 1px solid #ddd;
     border-radius: 4px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 10px; /* Espaço entre os elementos */
 }
 
-li.completed {
-    text-decoration: line-through;
-    opacity: 0.7;
+/* Checkbox à esquerda */
+li input[type="checkbox"] {
+    margin: 0;
+    flex-shrink: 0; /* Impede que o checkbox diminua */
 }
 
+/* Texto do item (nome e quantidade) */
+li span {
+    flex-grow: 1; /* Faz o texto ocupar o espaço restante */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Botão de remover */
 li button {
     background-color: #dc3545;
     border: none;
@@ -81,12 +90,20 @@ li button {
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
+    flex-shrink: 0; /* Impede que o botão diminua */
 }
 
 li button:hover {
     background-color: #c82333;
 }
 
+/* Estilo para itens completos */
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Responsividade para telas pequenas */
 @media (max-width: 600px) {
     .container {
         width: 90%;
@@ -100,5 +117,15 @@ li button:hover {
     input, button {
         width: 100%;
         margin-bottom: 10px;
+    }
+
+    /* Ajustes para os itens da lista em telas pequenas */
+    li {
+        flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha */
+    }
+
+    li span {
+        width: 100%; /* Faz o texto ocupar a linha inteira */
+        margin: 5px 0; /* Adiciona um pequeno espaço acima e abaixo */
     }
 }
